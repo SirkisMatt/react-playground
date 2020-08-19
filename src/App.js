@@ -6,6 +6,7 @@ import Bomb from './state-drills/Bomb'
 //import RouletteGun from './state-drills/RouletteGun'
 //import Counter from './state/Counter'
 import Tabs from './state/Tabs'
+import Accordion from './state-drills/Accordion'
 import './App.css';
 
 const tabsProp = [
@@ -17,11 +18,27 @@ const tabsProp = [
     content: 'Fugit, sapiente aspernatur corporis velit, dolor eum reprehenderit provident ipsam, maiores incidunt repellat! Facilis, neque doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam exercitationem quos consectetur expedita consequatur.' },
 ];
 
+const accordArray = [
+  {
+    title: 'Section 1',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  },
+  {
+    title: 'Section 2',
+    content: 'Cupiditate tenetur aliquam necessitatibus id distinctio quas nihil ipsam nisi modi!',
+  },
+  {
+    title: 'Section 3',
+    content: 'Animi amet cumque sint cupiditate officia ab voluptatibus libero optio et?',
+  },
+];
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <TheDate />
+        <Accordion sections={accordArray} />
         <Bomb />
         <Tabs tabs={tabsProp} />
       </div>
