@@ -7,6 +7,8 @@ import Bomb from './state-drills/Bomb'
 //import Counter from './state/Counter'
 import Tabs from './state/Tabs'
 import Accordion from './state-drills/Accordion'
+import AddItemForm from './Callback-drill/AddItemForm';
+import ShoppingList from './Callback-drill/ShoppingList';
 import './App.css';
 
 const tabsProp = [
@@ -34,6 +36,43 @@ const accordArray = [
 ];
 
 class App extends Component {
+  state = {
+    shoppingItems: [
+      /* put stub items in here for testing */
+      { name: 'apples', checked: false },
+      { name: 'oranges', checked: true },
+      { name: 'bread', checked: false },
+    ]
+  };
+
+  handleDeleteItem = (item) => {
+    const newItems = this.state.shoppingItems.filter(itm => itm !== item)
+    this.setState({
+      shoppingItems: newItems
+    })
+  }
+  handleCheckItem = (item) => {
+    const newItems = this.state.shoppingItems.map(itm => {
+      if (itm === item) {
+        itm.checked = !itm.checked
+      }
+      return itm
+    })
+    this.setState({
+      shoppingItems: newItems
+    })
+  }
+
+  handleAddItem = (itemName) => {
+    const newItems = [
+      ...this.state.shoppingItems,
+      {name: itemName, checked: false}
+    ]
+    this.setState({
+      shoppingItems:newItems
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,6 +80,24 @@ class App extends Component {
         <Accordion sections={accordArray} />
         <Bomb />
         <Tabs tabs={tabsProp} />
+        <header>
+          <h1>Shopping List</h1>
+        </header>
+        <main>
+          <section>
+            <AddItemForm 
+              onAddItem={this.handleAddItem}
+            />
+          </section>
+          <section>
+            <ShoppingList 
+            items={this.state.shoppingItems}
+          
+            onDeleteItem={this.handleDeleteItem}
+            onCheckItem={this.handleCheckItem} 
+            />
+          </section>
+        </main>
       </div>
       
     );
