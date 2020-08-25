@@ -9,6 +9,8 @@ import Tabs from './state/Tabs'
 import Accordion from './state-drills/Accordion'
 import AddItemForm from './Callback-drill/AddItemForm';
 import ShoppingList from './Callback-drill/ShoppingList';
+import DemonynApp from './demonymapp/demonymApp';
+//import Promises from './promises'
 import './App.css';
 
 const tabsProp = [
@@ -80,6 +82,8 @@ class App extends Component {
         <Accordion sections={accordArray} />
         <Bomb />
         <Tabs tabs={tabsProp} />
+        <DemonynApp/>
+        
         <header>
           <h1>Shopping List</h1>
         </header>
